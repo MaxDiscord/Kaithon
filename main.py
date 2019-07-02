@@ -23,7 +23,7 @@ while br == False:
         vVal = il[3]
         eqeq = il[2]
         if "="  != eqeq:
-            raise NoEqEq("No Equals")
+            raise NoEqEq("No Equals",line)
         else:
             if "*" in il or "/" in il or "+" in il or "-" in il:
                 il[3] = int(il[3])
@@ -59,9 +59,8 @@ while br == False:
                 varName.append(vName)
                 varCont.append(vValue[1])
             vValue = vVal.split('"')
-            varName.append(vName)
-            varCont.append(vValue[1])
-            
+            if "1" in vValue[0] or "2" in vValue[0] or "3" in vValue[0] or "4" in vValue[0] or "4" in vValue[0] or "5" in vValue[0] or "6" in vValue[0] or "7" in vValue[0] or "8" or "9" in vValue[0] or "0" in vValue[0]:
+                vValue[0] = int(vValue[0])
             varName.append(vName)
             varCont.append(vValue)
             prev = vVal
@@ -91,13 +90,13 @@ while br == False:
     elif "if" == il[0]:
         eckeck = il[2]
         if eckeck != "=":
-            raise NoEqEq("No equals")
+            raise NoEqEq("No equals",line)
         else:
             v1 = il[1]
             rock = varName.index(v1)
             v1 = varCont[rock]
             v2 = il[3]
-            stick = varName.index(v2)
+            stick = varCont.index(int(v2))
             v2 = varCont[stick]
             if v1 != v2:
                 global untilhere
@@ -106,7 +105,7 @@ while br == False:
                     if ad[x]=="}":
                         untilhere=x
                 if untilhere==0:
-                    raise NoEnd("No end to IF")
+                    raise NoEnd("No end to IF",line)
                 line=line+(untilhere-line)
     elif "input" == il[0]:
         nameovar = il[1]
@@ -115,7 +114,7 @@ while br == False:
         varName.append(nameovar)
         varCont.append(response)
         response = ""
-
+    
         
     line=line+1
     if line == len(ad):
