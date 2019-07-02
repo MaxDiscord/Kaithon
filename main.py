@@ -3,6 +3,8 @@ import random
 import time
 class NoEqEq(Exception):
     pass
+class NoEnd(Exception):
+    pass
 global prev
 varName = []
 varCont = []
@@ -52,10 +54,16 @@ while br == False:
                 dcont = varCont.index(prev)
                 del varName[dvar]
                 del varCont[dcont]
+                global vValue
+                vValue = vVal.split('"')
                 varName.append(vName)
-                varCont.append(vVal)                                     
+                varCont.append(vValue[1])
+            vValue = vVal.split('"')
             varName.append(vName)
-            varCont.append(vVal)
+            varCont.append(vValue[1])
+            
+            varName.append(vName)
+            varCont.append(vValue)
             prev = vVal
     elif "delvar" == il[0]:
         varToDel = il[1]
@@ -79,10 +87,7 @@ while br == False:
             rob = varName.index(parnn[0])
             bst = varCont[rob]
             bst = str(bst)
-            if '"' in bst:
-                print (b[1])
-            else:
-                print (bst)
+            print (bst)
     elif "if" == il[0]:
         eckeck = il[2]
         if eckeck != "=":
@@ -103,6 +108,13 @@ while br == False:
                 if untilhere==0:
                     raise NoEnd("No end to IF")
                 line=line+(untilhere-line)
+    elif "input" == il[0]:
+        nameovar = il[1]
+        ract = ad[line].split('"')
+        response = input(ract[1])
+        varName.append(nameovar)
+        varCont.append(response)
+        response = ""
 
         
     line=line+1
