@@ -67,7 +67,8 @@ while br == False:
             content=""
             for x in range(1,len(il)):
                 content=content+il[x]+" "
-            print (content)
+            cat = content.split('"')
+            print (cat[1])
         else:
             parens = ad[line].split("(")
             parens = str(parens)
@@ -79,10 +80,30 @@ while br == False:
             bst = varCont[rob]
             bst = str(bst)
             if '"' in bst:
-                b = bst.split('"')
                 print (b[1])
             else:
                 print (bst)
+    elif "if" == il[0]:
+        eckeck = il[2]
+        if eckeck != "=":
+            raise NoEqEq("No equals")
+        else:
+            v1 = il[1]
+            rock = varName.index(v1)
+            v1 = varCont[rock]
+            v2 = il[3]
+            stick = varName.index(v2)
+            v2 = varCont[stick]
+            if v1 != v2:
+                global untilhere
+                untilhere=0
+                for x in range(line+1,len(ad)):
+                    if ad[x]=="}":
+                        untilhere=x
+                if untilhere==0:
+                    raise NoEnd("No end to IF")
+                line=line+(untilhere-line)
+
         
     line=line+1
     if line == len(ad):
