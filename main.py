@@ -120,3 +120,4 @@ while br == False:
     line=line+1
     if line == len(ad):
         br = True
+        #wait
