@@ -34,7 +34,7 @@ while br == False:
                     varName.append(il[1])
                     varCont.append(answ)
                     mth = True
-                elif op == "-":
+                elif op == "-": 
                     answ = il[3] - il[5]
                     varName.append(il[1])
                     varCont.append(answ)
@@ -96,7 +96,8 @@ while br == False:
             rock = varName.index(v1)
             v1 = varCont[rock]
             v2 = il[3]
-            stick = varCont.index(int(v2))
+            #peen = v2.split('"')
+            stick = varName.index(v2)
             v2 = varCont[stick]
             if v1 != v2:
                 global untilhere
