@@ -59,10 +59,11 @@ while br == False:
                 varName.append(vName)
                 varCont.append(vValue[1])
             vValue = vVal.split('"')
-            if "1" in vValue[0] or "2" in vValue[0] or "3" in vValue[0] or "4" in vValue[0] or "4" in vValue[0] or "5" in vValue[0] or "6" in vValue[0] or "7" in vValue[0] or "8" or "9" in vValue[0] or "0" in vValue[0]:
-                vValue[0] = int(vValue[0])
             varName.append(vName)
-            varCont.append(vValue[0])
+            if len(vValue) == 1:
+                varCont.append(vValue[0])
+            else:
+                varCont.append(vValue[1])
             prev = vVal
     elif "delvar" == il[0]:
         varToDel = il[1]
