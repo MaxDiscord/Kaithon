@@ -26,8 +26,22 @@ while br == False:
             raise NoEqEq("No Equals",line)
         else:
             if "*" in il or "/" in il or "+" in il or "-" in il:
-                il[3] = int(il[3])
-                il[5] = int(il[5])
+                if il[3] not in varName:
+                    il[3] = int(il[3])
+                else:
+                    xdf = varName.index(il[3])
+                    xaf = varCont[xdf]
+                if il[5] not in varName:
+                    il[5] = int(il[5])
+                else:
+                    cdf = varName.index(il[5])
+                    caf = varCont[cdf]
+                    xaf = int(xaf)
+                    caf = int(caf)
+                    answd = xaf + caf
+                    varName.append(il[1])
+                    varCont.append(answd)
+                    
                 op = il[4]
                 if op == "+":
                     answ = il[3] + il[5]
@@ -97,7 +111,6 @@ while br == False:
             rock = varName.index(v1)
             v1 = varCont[rock]
             v2 = il[3]
-            #peen = v2.split('"')
             stick = varName.index(v2)
             v2 = varCont[stick]
             if v1 != v2:
