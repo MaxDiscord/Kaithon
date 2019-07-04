@@ -1,2 +1,4 @@
 lst kai
+var nerd = 5
+append nerd
 p (kai)

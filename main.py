@@ -166,11 +166,7 @@ while br == False:
         lsts.append([])
     elif "append" == il[0]:
         doac = varName.index(il[1])
-        ekac = "="
-        if il[2] != ekac:
-            raise NoEqEq("No equals")
-        il[3] = int(il[3])
-        lsts[il[3]].append(varCont[doac])
+        lsts[1].append(varCont[doac])
     elif "tc" == il[0]:
         print (lsts)
 
