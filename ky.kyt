@@ -1,4 +1,2 @@
-lst robin
-var yum = "robin"
-append yum = 0
-tc
+lst kai
+p (kai)

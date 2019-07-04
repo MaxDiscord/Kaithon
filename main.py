@@ -99,10 +99,17 @@ while br == False:
             paren = str(paren)
             parn = paren.split("'")
             parnn = parn[3].split('"')
-            rob = varName.index(parnn[0])
-            bst = varCont[rob]
-            bst = str(bst)
-            print (bst)
+            if parnn[0] in varName:
+                rob = varName.index(parnn[0])
+                bst = varCont[rob]
+                bst = str(bst)
+                print (bst)
+            else:
+                parent = ad[line].split("(")
+                parent = str(parent[1])
+                parent = parent.split(")")
+                dood = lsts.index(parent[0])
+                print (lsts[dood + 1])
     elif "if" == il[0]:
         eckeck = il[2]
         if eckeck != "=":
@@ -155,6 +162,7 @@ while br == False:
         elif type(varCont[tip]) == bool:
             varCont.append("bool")
     elif "lst" == il[0]:
+        lsts.append(il[1])
         lsts.append([])
     elif "append" == il[0]:
         doac = varName.index(il[1])
@@ -164,7 +172,7 @@ while br == False:
         il[3] = int(il[3])
         lsts[il[3]].append(varCont[doac])
     elif "tc" == il[0]:
-        print (lsts[0][0])
+        print (lsts)
 
 
     if ad[line + 1] == "":
