@@ -27,17 +27,17 @@ while br == False:
         else:
             if "*" in il or "/" in il or "+" in il or "-" in il:
                 if il[3] not in varName:
-                    il[3] = int(il[3])
+                    il[3] = float(il[3])
                 else:
                     xdf = varName.index(il[3])
                     xaf = varCont[xdf]
                 if il[5] not in varName:
-                    il[5] = int(il[5])
+                    il[5] = float(il[5])
                 else:
                     cdf = varName.index(il[5])
                     caf = varCont[cdf]
-                    xaf = int(xaf)
-                    caf = int(caf)
+                    xaf = float(xaf)
+                    caf = float(caf)
                     answd = xaf + caf
                     varName.append(il[1])
                     varCont.append(answd)
@@ -129,6 +129,30 @@ while br == False:
         varName.append(nameovar)
         varCont.append(response)
         response = ""
+    elif "integ" == il[0]:
+        integify = varName.index(il[1])
+        varCont[integify] = int(varCont[integify])
+    elif "strin" == il[0]:
+        strinify = varName.index(il[1])
+        varCont[strinify] = str(varCont[strinify])
+    elif "bool" == il[0]:
+        boolify = varName.index(il[1])
+        varCont[boolify] = bool(varCont[boolify])
+    elif "flt" == il[0]:
+        floatify = varName.index(il[1])
+        varCont[floatify] = float(varCont[floatify])
+    elif "type" == il[0]:
+        tip = varName.index(il[2])
+        asgn = il[1]
+        varName.append(asgn)
+        if type(varCont[tip]) == str:
+            varCont.append("strin")
+        elif type(varCont[tip]) == int:
+            varCont.append("integ")
+        elif type(varCont[tip]) == float:
+            varCont.append("flt")
+        elif type(varCont[tip]) == bool:
+            varCont.append("bool")
     
         
     line=line+1
