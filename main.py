@@ -8,6 +8,7 @@ class NoEnd(Exception):
 global prev
 varName = []
 varCont = []
+lsts = []
 mth = False
 line=0
 br = False
@@ -41,14 +42,14 @@ while br == False:
                     answd = xaf + caf
                     varName.append(il[1])
                     varCont.append(answd)
-                    
+
                 op = il[4]
                 if op == "+":
                     answ = il[3] + il[5]
                     varName.append(il[1])
                     varCont.append(answ)
                     mth = True
-                elif op == "-": 
+                elif op == "-":
                     answ = il[3] - il[5]
                     varName.append(il[1])
                     varCont.append(answ)
@@ -153,8 +154,21 @@ while br == False:
             varCont.append("flt")
         elif type(varCont[tip]) == bool:
             varCont.append("bool")
-    
-        
+    elif "lst" == il[0]:
+        lsts.append([])
+    elif "append" == il[0]:
+        doac = varName.index(il[1])
+        ekac = "="
+        if il[2] != ekac:
+            raise NoEqEq("No equals")
+        il[3] = int(il[3])
+        lsts[il[3]].append(varCont[doac])
+    elif "tc" == il[0]:
+        print (lsts[0][0])
+
+
+    if ad[line + 1] == "":
+        sys.exit()
     line=line+1
     if line == len(ad):
         br = True
