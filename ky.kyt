@@ -1,0 +1,9 @@
+var michael = "55"
+flt michael
+type output michael
+p (output)
+var toby = "57"
+integ toby
+var endResult = michael + toby
+integ endResult
+p (endResult)
