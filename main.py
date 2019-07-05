@@ -1,9 +1,12 @@
 import sys
 import random
 import time
+import win32create as w32
 class NoEqEq(Exception):
     pass
 class NoEnd(Exception):
+    pass
+class NoParens(Exception):
     pass
 global prev
 varName = []
@@ -13,17 +16,25 @@ mth = False
 line=0
 br = False
 f = open ("ky.kyt","r")
+log = open ("kycache.kyc","w")
 a = f.read()
 ad = a.split("\n")
 while br == False:
+    link = line + 1
+    lin = str(link)
+    rage = "Parsed " + lin
+    log.write(rage)
+    log.write("\n")
     mth = False
-    #remember to del line at end of funcs
     il = ad[line].split()
     if "var" == il[0]:
         vName = il[1]
         vVal = il[3]
         eqeq = il[2]
         if "="  != eqeq:
+            noek = "No Equals LINE " + lin
+            log.write (noek)
+            log.close()
             raise NoEqEq("No Equals",line)
         else:
             if "*" in il or "/" in il or "+" in il or "-" in il:
@@ -105,34 +116,48 @@ while br == False:
                 bst = str(bst)
                 print (bst)
             else:
-                parent = ad[line].split("(")
-                parent = str(parent[1])
-                parent = parent.split(")")
-                dood = lsts.index(parent[0])
-                dangdag = lsts[dood + 1]
-                dangdag = str(dangdag)
-                dack = dangdag.split("'")
-                print (dack[1])
+                il[2] = int (il[2])
+                print (lsts[il[2]])
     elif "if" == il[0]:
         eckeck = il[2]
         if eckeck != "=":
+            noeq = "No Equals ",lin
+            log.write(noeq)
+            log.close()
             raise NoEqEq("No equals",line)
         else:
             v1 = il[1]
             rock = varName.index(v1)
             v1 = varCont[rock]
             v2 = il[3]
-            stick = varName.index(v2)
-            v2 = varCont[stick]
-            if v1 != v2:
-                global untilhere
-                untilhere=0
-                for x in range(line+1,len(ad)):
-                    if ad[x]=="}":
-                        untilhere=x
-                if untilhere==0:
-                    raise NoEnd("No end to IF",line)
-                line=line+(untilhere-line)
+            if v2 not in varName:
+                v2 = int(v2)
+                if v1 == v2:
+                    global intulhere
+                    intulhere = 0
+                    for x in range(line+1,len(ad)):
+                        if ad[x] =="}":
+                            intulhere=x
+                    if intulhere ==0:
+                        noendo = "No End To If Statement "+lin
+                        log.write(noendo)
+                        log.close()
+                        raise NoEnd("No end to IF")
+            else:
+                stick = varName.index(v2)
+                v2 = varCont[stick]
+                if v1 != v2:
+                    global untilhere
+                    untilhere=0
+                    for x in range(line+1,len(ad)):
+                        if ad[x]=="}":
+                            untilhere=x
+                    if untilhere==0:
+                        noendof = "No End To If Statement "+lin
+                        log.write(noendof)
+                        log.close()
+                        raise NoEnd("No end to IF",line)
+                    line=line+(untilhere-line)
     elif "input" == il[0]:
         nameovar = il[1]
         ract = ad[line].split('"')
@@ -168,11 +193,16 @@ while br == False:
         lsts.append(il[1])
         lsts.append([])
     elif "append" == il[0]:
-        doac = varName.index(il[1])
-        lsts[1].append(varCont[doac])
+        listToAppendOn = il[1]
+        varToAppend = il[2]
+        listAppendIndex = lsts.index(listToAppendOn)
+        varToAppendIndex = varName.index(varToAppend)
+        lsts[listAppendIndex+ 1].append(varCont[varToAppendIndex])
+
 
 
     if ad[line + 1] == "":
+        log.close()
         sys.exit()
     line=line+1
     if line == len(ad):

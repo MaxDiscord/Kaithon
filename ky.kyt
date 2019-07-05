@@ -1,6 +1,8 @@
-lst kai
-var nerd = 7
-var cat = 8
-append nerd
-append cat
-p (kai)
+lst rage
+lst robin
+var c = 3
+var z = 9
+append rage c
+append robin z
+p (rage 1 )
+p (robin 1 )
