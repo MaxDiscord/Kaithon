@@ -1,4 +1,6 @@
 lst kai
-var nerd = 5
+var nerd = 7
+var cat = 8
 append nerd
+append cat
 p (kai)

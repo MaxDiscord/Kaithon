@@ -109,7 +109,10 @@ while br == False:
                 parent = str(parent[1])
                 parent = parent.split(")")
                 dood = lsts.index(parent[0])
-                print (lsts[dood + 1])
+                dangdag = lsts[dood + 1]
+                dangdag = str(dangdag)
+                dack = dangdag.split("'")
+                print (dack[1])
     elif "if" == il[0]:
         eckeck = il[2]
         if eckeck != "=":
@@ -167,8 +170,6 @@ while br == False:
     elif "append" == il[0]:
         doac = varName.index(il[1])
         lsts[1].append(varCont[doac])
-    elif "tc" == il[0]:
-        print (lsts)
 
 
     if ad[line + 1] == "":
