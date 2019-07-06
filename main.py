@@ -116,8 +116,10 @@ while br == False:
                 bst = str(bst)
                 print (bst)
             else:
-                
-                bart = lsts.index(il[2])
+                nopanren = il[1].split(")")
+
+                noopen = nopanren[0].split("(")
+                bart = lsts.index(noopen[1])
                 bart = bart + 1
                 print (lsts[bart])
     elif "if" == il[0]:

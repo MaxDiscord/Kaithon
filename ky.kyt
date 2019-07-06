@@ -9,5 +9,5 @@ integ x
 append rage c
 append robin z
 append rage x
-p ( rage 1 )
-p ( robin 1 )
+p (rage 1)
+p (robin 1)
