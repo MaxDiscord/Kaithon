@@ -116,9 +116,7 @@ while br == False:
                 bst = str(bst)
                 print (bst)
             else:
-                #strippedofparens = il[2].split(")")
-                #strippedofparenss = "'" + strippedofparens[0] + "'"
-                #print (strippedofparenss)
+                
                 bart = lsts.index(il[2])
                 bart = bart + 1
                 print (lsts[bart])
