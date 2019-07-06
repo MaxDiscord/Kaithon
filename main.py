@@ -116,8 +116,9 @@ while br == False:
                 bst = str(bst)
                 print (bst)
             else:
-                il[2] = int (il[2])
-                print (lsts[il[2]])
+                bart = lsts.index(il[2])
+                bart = bart + 1
+                print (lsts[bart])
     elif "if" == il[0]:
         eckeck = il[2]
         if eckeck != "=":
