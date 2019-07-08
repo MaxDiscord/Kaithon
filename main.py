@@ -202,6 +202,11 @@ while br == False:
         listAppendIndex = lsts.index(listToAppendOn)
         varToAppendIndex = varName.index(varToAppend)
         lsts[listAppendIndex+ 1].append(varCont[varToAppendIndex])
+    elif "dlt" == il[0]:
+        fatman = varName.index(il[2])
+        vDel = lsts.index(il[1])
+        vDel = vDel+1
+        del lsts[vDel][fatman]
 
 
 
