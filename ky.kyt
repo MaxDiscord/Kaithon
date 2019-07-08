@@ -1,0 +1,3 @@
+var poo = "kai"
+uppr poo
+p (poo)

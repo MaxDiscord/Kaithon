@@ -207,6 +207,23 @@ while br == False:
         vDel = lsts.index(il[1])
         vDel = vDel+1
         del lsts[vDel][fatman]
+    elif "uppr" == il[0]:
+        uVar = varName.index(il[1])
+        upperedVar = varCont[uVar].upper()
+        beforing = varName[uVar]
+        del varName[uVar]
+        del varCont[uVar]
+        varName.append(beforing)
+        varCont.append(upperedVar)
+    elif "lowr" == il[0]:
+        lVar = varName.index(il[1])
+        loweredVar = varCont[uVar].lower()
+        beforring = varName[lVar]
+        del varName[lVar]
+        del varCont[lVar]
+        varName.append(beforring)
+        varCont.append(loweredVar)
+
 
 
 
