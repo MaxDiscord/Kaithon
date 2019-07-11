@@ -1,7 +1,6 @@
 import sys
 import random
 import time
-import win32create as w32
 class NoEqEq(Exception):
     pass
 class NoEnd(Exception):
@@ -225,7 +224,25 @@ while br == False:
             del varCont[lVar]
             varName.append(beforring)
             varCont.append(loweredVar)
-
+    elif "using" == il[0]:
+        if il[1] == "time":
+            import timea
+        elif il[1] == "w32":
+            import win32create as w32
+        elif il[1] == "random":
+            from rndm import *
+    elif "time.delay"==il[0]:
+        il[1] = int(il[1])
+        timea.sleep(il[1])
+    elif "time.cTime"==il[0]:
+        timea.currentTime()
+    elif "random.randnum"== il[0]:
+        import random
+        il[1] = int (il[2])
+        il[2] = int (il[3])
+        z=random.randint(il[2],il[3])
+        varName.append(il[1])
+        varCont.append(z)
 
 
 
