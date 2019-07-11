@@ -96,7 +96,7 @@ while br == False:
         varToDel = int(varToDel)
         del varName[varToDel]
         del varCont[varToDel]
-    elif "p" == il[0]:
+    elif "console.println" == il[0]:
         if '"' in il[1]:
             content=""
             for x in range(1,len(il)):
@@ -162,7 +162,7 @@ while br == False:
                         log.close()
                         raise NoEnd("No end to IF",line)
                     line=line+(untilhere-line)
-    elif "input" == il[0]:
+    elif "console.req_input" == il[0]:
         nameovar = il[1]
         ract = ad[line].split('"')
         response = input(ract[1])
@@ -216,13 +216,15 @@ while br == False:
         varName.append(beforing)
         varCont.append(upperedVar)
     elif "lowr" == il[0]:
-        lVar = varName.index(il[1])
-        loweredVar = varCont[uVar].lower()
-        beforring = varName[lVar]
-        del varName[lVar]
-        del varCont[lVar]
-        varName.append(beforring)
-        varCont.append(loweredVar)
+        if il[1] in varName:
+            lVar = varName.index(il[1])
+            print (varCont[lVar])
+            loweredVar = varCont[lVar].lower()
+            beforring = varName[lVar]
+            del varName[lVar]
+            del varCont[lVar]
+            varName.append(beforring)
+            varCont.append(loweredVar)
 
 
 
