@@ -1,0 +1,4 @@
+var rage = 5
+if rage = 5 {
+	console.println("factual")
+}

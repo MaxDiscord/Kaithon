@@ -18,6 +18,7 @@ f = open ("ky.kyt","r")
 log = open ("kycache.kyc","w")
 a = f.read()
 ad = a.split("\n")
+il = ad[0].split()
 while br == False:
     link = line + 1
     lin = str(link)
@@ -243,13 +244,26 @@ while br == False:
         z=random.randint(il[2],il[3])
         varName.append(il[1])
         varCont.append(z)
+    elif "len" == il[0]:
+        ListForLen = il[3]
+        ListPlacementForLen = ListForLen.index(ListForLen)
+        equals = il[2]
+        varToAssign = il[1]
+        lenny = len(lsts[ListPlacementForLen + 1])
+        if equals != "=":
+            raise NoEqEq ("No Equals for Len")
+        else:
+            varName.append(varToAssign)
+            varCont.append(lenny)
 
 
 
-    if ad[line + 1] == "":
+    if line + 1 == len(ad):
+        br = True
+        #wait
+        log.close()
+        sys.exit()
+    if ad[line+1] == "":
         log.close()
         sys.exit()
     line=line+1
-    if line == len(ad):
-        br = True
-        #wait
