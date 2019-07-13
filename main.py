@@ -327,6 +327,18 @@ while br == False:
             else:
                 constName.append(constAddName)
                 constCont.append(constAddContent)
+    elif "index" == il[0]:
+        varToCreate = il[1]
+        equalz = il[2]
+        otherindexzone = il[3]
+        otherindezone = otherindexzone.split(",")
+        ListToIndex = lsts.index(otherindezone[0])
+        ListToIndex = ListToIndex + 1
+        varToIndex = varName.index(otherindezone[1])
+        varToInde = varCont[varToIndex]
+        indexReturn = lsts[ListToIndex].index(varToInde)
+        varName.append(varToCreate)
+        varCont.append(indexReturn)
 
 
     if line + 1 == len(ad):
