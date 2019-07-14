@@ -15,6 +15,7 @@ varName = []
 varCont = []
 constName=[]
 constCont=[]
+listOfTuples=[]
 constanted = False
 lsts = []
 mth = False
@@ -360,6 +361,12 @@ while br == False:
         print ("Thank you for using Kaithon!")
         log.close()
         sys.exit()
+    elif "tuple" == il[0]:
+        tupName = il[1]
+        listOfTuples.append(tupName)
+        listOfTuples.append(())
+        print (listOfTuples)
+
 
 
     if line + 1 == len(ad):
