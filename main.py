@@ -15,7 +15,6 @@ varName = []
 varCont = []
 constName=[]
 constCont=[]
-listOfTuples=[]
 constanted = False
 lsts = []
 mth = False
@@ -265,7 +264,6 @@ while br == False:
         lsts.append(il[1])
         lsts.append([])
     elif "append" == il[0]:
-        listToAppendOn = il[1]
         varToAppend = il[2]
         listAppendIndex = lsts.index(listToAppendOn)
         varToAppendIndex = varName.index(varToAppend)
@@ -361,11 +359,6 @@ while br == False:
         print ("Thank you for using Kaithon!")
         log.close()
         sys.exit()
-    elif "tuple" == il[0]:
-        tupName = il[1]
-        listOfTuples.append(tupName)
-        listOfTuples.append(())
-        print (listOfTuples)
 
 
 
