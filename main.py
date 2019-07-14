@@ -1,6 +1,7 @@
 import sys
 import random
 import time
+lean = False
 class NoEqEq(Exception):
     pass
 class NoEnd(Exception):
@@ -158,13 +159,20 @@ while br == False:
                 print (bst)
             if parnn[0] not in varName:
                 if constanted == False:
-                    print ("insli")
                     nopanren = il[1].split(")")
                     noopen = nopanren[0].split("(")
                     bart = lsts.index(noopen[1])
                     bart = bart + 1
-                    listprint = "Printed List Entry" + lsts[bart] + "\n"
-                    print (lsts[bart])
+                    if len(il) == 2:
+                        lean=True
+                    if lean ==False:
+                        ill = il[2].split(")")
+                        ill[0] = int (ill[0])
+                        print (lsts[bart][ill[0]])
+                    elif lean == True:
+                        print (lsts[bart])
+                    else:
+                        pass
                 else:
                     pass
     elif "if" == il[0]:
@@ -267,13 +275,22 @@ while br == False:
         vDel = vDel+1
         del lsts[vDel][fatman]
     elif "uppr" == il[0]:
-        uVar = varName.index(il[1])
-        upperedVar = varCont[uVar].upper()
-        beforing = varName[uVar]
-        del varName[uVar]
-        del varCont[uVar]
-        varName.append(beforing)
-        varCont.append(upperedVar)
+        if il[1] in lsts:
+            il[1] = lsts.index(il[1])
+            il[1] = il[1] + 1
+            nado = lsts[il[1]].index(il[2])
+            upperedpro = lsts[il[1]][nado].upper()
+            print (upperedpro)
+            del lsts[il[1]][nado]
+            lsts[il[1]].append(upperedpro)
+        else:
+            uVar = varName.index(il[1])
+            upperedVar = varCont[uVar].upper()
+            beforing = varName[uVar]
+            del varName[uVar]
+            del varCont[uVar]
+            varName.append(beforing)
+            varCont.append(upperedVar)
     elif "lowr" == il[0]:
         if il[1] in varName:
             lVar = varName.index(il[1])
@@ -339,6 +356,10 @@ while br == False:
         indexReturn = lsts[ListToIndex].index(varToInde)
         varName.append(varToCreate)
         varCont.append(indexReturn)
+    elif "exit" == il[0]:
+        print ("Thank you for using Kaithon!")
+        log.close()
+        sys.exit()
 
 
     if line + 1 == len(ad):

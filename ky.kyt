@@ -1,9 +1,0 @@
-lst robin
-var x = 5
-var z = 7
-append robin x
-append robin z
-console.println (robin(0))
-console.println (robin(1))
-len roac = robin
-console.println (roac)
