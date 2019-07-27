@@ -19,6 +19,8 @@ constanted = False
 lsts = []
 mth = False
 line=0
+count=0
+repeating =  False
 br = False
 f = open ("ky.kyt","r")
 log = open ("kycache.kyc","w")
@@ -26,6 +28,14 @@ a = f.read()
 ad = a.split("\n")
 il = ad[0].split()
 while br == False:
+    if line + 1 == len(ad):
+        br = True
+        log.close()
+        sys.exit()
+    if ad[line+1] == "":
+        br = True
+        log.close()
+        sys.exit()
     link = line + 1
     lin = str(link)
     rage = "Parsed " + lin
@@ -176,49 +186,40 @@ while br == False:
                 else:
                     pass
     elif "if" == il[0]:
-        eckeck = il[2]
-        if eckeck != "=":
-            noeq = "No Equals ",lin
-            log.write(noeq)
-            log.close()
-            raise NoEqEq("No equals",line)
+        global ina
+        ina = True
+        global string
+        string = False
+        varCheck = varName.index(il[1])
+        v1 = varCont[varCheck]
+        if il[3] not in varCont:
+            if ina == True:
+                if '"' in il[3]:
+                    v2 = il[3]
+                else:
+                    v2 = int(il[3])
         else:
-            v1 = il[1]
-            rock = varName.index(v1)
-            v1 = varCont[rock]
-            v2 = il[3]
-            if v2 not in varName:
-                v2 = int(v2)
-                if v1 == v2:
-                    correctif = "If statement success " + v1 + " = " + v2 + "\n"
-                    log.write(correctif)
-                    global intulhere
-                    intulhere = 0
-                    for x in range(line+1,len(ad)):
-                        if ad[x] =="}":
-                            intulhere=x
-                    if intulhere ==0:
-                        noendo = "No End To If Statement "+lin
-                        log.write(noendo)
-                        log.close()
-                        raise NoEnd("No end to IF")
-            else:
-                stick = varName.index(v2)
-                v2 = varCont[stick]
-                if v1 != v2:
-                    incorrectif = "If statement failed " + v1 + " != " + v2 + "\n"
-                    log.write(incorrectif)
-                    global untilhere
-                    untilhere=0
-                    for x in range(line+1,len(ad)):
-                        if ad[x]=="}":
-                            untilhere=x
-                    if untilhere==0:
-                        noendof = "No End To If Statement "+lin + "\n"
-                        log.write(noendof)
-                        log.close()
-                        raise NoEnd("No end to IF",line)
-                    line=line+(untilhere-line)
+            varTOCheck = varName.index(il[3])
+            v2 = varCont[varTOCheck]
+
+        global till
+        till = 0
+        for x in range (line + 1,len(ad)):
+            if line + 1 == len(ad):
+                br = True
+                log.close()
+                sys.exit()
+            if ad[line + 1] == "":
+                br = True
+                log.close()
+                sys.exit()
+            if ad[x] == "}":
+                till = x
+        if v1 == v2:
+            pass
+        else:
+            line = till
+
     elif "console.req_input" == il[0]:
         nameovar = il[1]
         ract = ad[line].split('"')
@@ -359,15 +360,32 @@ while br == False:
         print ("Thank you for using Kaithon!")
         log.close()
         sys.exit()
-
-
-
+    elif "repeat" == il[0]:
+        times = int(il[1])
+        count = 1
+        repeatplace = line
+    elif "endrepeat" == il[0]:
+        if count<times:
+            repeating = True
+        else:
+            if line  +  1 == len(ad):
+                br = True
+                log.close()
+                sys.exit()
+            if ad[line+1] == "":
+                log.close()
+                sys.exit()
     if line + 1 == len(ad):
         br = True
         #wait
         log.close()
         sys.exit()
-    if ad[line+1] == "":
-        log.close()
-        sys.exit()
+        if ad[line+1] == "":
+            log.close()
+            sys.exit()
+
+    if repeating:
+        line=repeatplace
+        count=count+1
+        repeating = False
     line=line+1
